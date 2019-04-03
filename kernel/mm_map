@@ -1,0 +1,30 @@
+
+one point: 0x1000 byte
+
+Kernel paging:
+
+0           0x100000          0x200000                       0x400000                          memlen
+|               |                |                               |                               |
+v               v                v                               v                               v
+................KKKKKKKKKKKKKKKKPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPUUUUUUUUUUUUUUUUUUUUUU~~~~~~~~~~~|
+Machine used   Kernel           Kernel paging                   User tasks' code and data
+
+Easy, yeah?
+
+
+
+
+User task paging:
+
+0            0x100000        0x200000       0x300000         0x3ff000
+|               |               |               |               |
+v               v               v               v               v
+SSSSSSSS........KKKKKKKKKKKKKKKKLLLLLLLLLLLLLLLLCCCCCCCCCCCCCCCC|
+Stack           Mix kernel      Located pages   The code and static 
+                code and data   (malloc)        data, only for non-kernel program
+
+Now all process are kernel process, but they are also run in user mode.
+
+
+
+
